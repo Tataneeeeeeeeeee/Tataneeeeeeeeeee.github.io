@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professional Developer Portfolio">
+    <title>John Doe - Full Stack Developer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="#home" class="logo-text">John Doe</a>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#projects" class="nav-link">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#skills" class="nav-link">Skills</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                        <span class="theme-icon">🌙</span>
+                    </button>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Hi, I'm John Doe</h1>
+            <p class="hero-subtitle">Full Stack Developer & Creative Problem Solver</p>
+            <p class="hero-description">
+                I craft beautiful, functional web experiences with clean code and modern technologies.
+                Passionate about building scalable solutions and continuous learning.
+            </p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn btn-primary">View My Work</a>
+                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+            </div>
+        </div>
+        <div class="hero-animation">
+            <div class="floating-shape shape-1"></div>
+            <div class="floating-shape shape-2"></div>
+            <div class="floating-shape shape-3"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        I'm a passionate full-stack developer with 5+ years of experience building web applications
+                        that solve real-world problems. My journey began with a curiosity about how things work on the web,
+                        and it has evolved into a career dedicated to creating exceptional user experiences.
+                    </p>
+                    <p>
+                        Specializing in modern JavaScript frameworks, I love turning complex ideas into simple, intuitive interfaces.
+                        When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects,
+                        or sharing knowledge with the developer community.
+                    </p>
+                    <p>
+                        I'm currently exploring AI/ML integration in web applications and always eager to collaborate on
+                        interesting projects. Let's build something amazing together!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <!-- Project Card 1 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">E-Commerce Platform</h3>
+                        <a href="https://github.com" class="project-link" target="_blank" rel="noopener noreferrer">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-1.02-2.44l2.58-2.58a3.37 3.37 0 0 0 0-4.77l-2.58-2.58a3.37 3.37 0 0 0-4.77 0l-2.58 2.58a3.37 3.37 0 0 0-2.44 1.02m0 0a3.37 3.37 0 0 1-2.44-1.02"></path>
+                            </svg>
+                        </a>
+                    </div>
+                    <p class="project-description">
+                        A full-featured e-commerce platform with shopping cart, payment integration, and order management.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">Stripe</span>
+                    </div>
+                </div>
+
+                <!-- Project Card 2 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Task Management App</h3>
+                        <a href="https://github.com" class="project-link" target="_blank" rel="noopener noreferrer">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-1.02-2.44l2.58-2.58a3.37 3.37 0 0 0 0-4.77l-2.58-2.58a3.37 3.37 0 0 0-4.77 0l-2.58 2.58a3.37 3.37 0 0 0-2.44 1.02m0 0a3.37 3.37 0 0 1-2.44-1.02"></path>
+                            </svg>
+                        </a>
+                    </div>
+                    <p class="project-description">
+                        Collaborative task management tool with real-time updates, team collaboration, and progress tracking.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Vue.js</span>
+                        <span class="tech-tag">Firebase</span>
+                        <span class="tech-tag">Tailwind</span>
+                    </div>
+                </div>
+
+                <!-- Project Card 3 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Weather Dashboard</h3>
+                        <a href="https://github.com" class="project-link" target="_blank" rel="noopener noreferrer">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-1.02-2.44l2.58-2.58a3.37 3.37 0 0 0 0-4.77l-2.58-2.58a3.37 3.37 0 0 0-4.77 0l-2.58 2.58a3.37 3.37 0 0 0-2.44 1.02m0 0a3.37 3.37 0 0 1-2.44-1.02"></path>
+                            </svg>
+                        </a>
+                    </div>
+                    <p class="project-description">
+                        Real-time weather application with location-based forecasts, interactive maps, and weather alerts.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">OpenWeather API</span>
+                        <span class="tech-tag">CSS Grid</span>
+                    </div>
+                </div>
+
+                <!-- Project Card 4 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Social Network</h3>
+                        <a href="https://github.com" class="project-link" target="_blank" rel="noopener noreferrer">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-1.02-2.44l2.58-2.58a3.37 3.37 0 0 0 0-4.77l-2.58-2.58a3.37 3.37 0 0 0-4.77 0l-2.58 2.58a3.37 3.37 0 0 0-2.44 1.02m0 0a3.37 3.37 0 0 1-2.44-1.02"></path>
+                            </svg>
+                        </a>
+                    </div>
+                    <p class="project-description">
+                        Scalable social network platform with user profiles, messaging, notifications, and content feed.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Next.js</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">Socket.io</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Skills & Technologies</h2>
+            <div class="skills-grid">
+                <!-- Frontend -->
+                <div class="skill-category">
+                    <h3 class="skill-category-title">Frontend</h3>
+                    <ul class="skill-list">
+                        <li>
+                            <span class="skill-icon">⚛️</span>
+                            <span class="skill-name">React</span>
+                        </li>
+                        <li>
+                            <span class="skill-icon">💚</span>
+                            <span class="skill-name">Vue.js</span>
+                        </li>
+                        <li>
+                            <span class="skill-icon">📘</span>
+                            <span class="skill-name">TypeScript</span>
+                        </li>
+                        <li>
+                            <span class="skill-icon">🎨</span>
+                            <span class="skill-name">CSS / SASS</span>
+                        </li>
+                        <li>
+                            <span class="skill-icon">🌊</span>
+                            <span class="skill-name">Tailwind CSS</span>
+                        </li>
+                        <li>
+                            <span class="skill-icon">📱</span>
+                            <span class="skill-name">Responsive Design</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Backend -->
+                <div class="skill-category">
+                    <h3 class="skill-category-title">Backend</h3>
+                    <ul class="skill-list">
+                        <li>
+                            <span class="skill-icon">🟢</span>
+                            <span class="skill-name">Node.js</span>
+                        </li>
+                        <li>
+                            <span class="skill-icon">🚀</span>
+                            <span class="skill-name">Express.js</span>
+                        </li>
+                        <li>
+                            <span class="skill-icon">🐍</span>
+                            <span class="skill-name">Python</span>
+                        </li>
+                        <li>
+                            <span class="skill-icon">🗄️</span>
+                            <span class="skill-name">Firebase</span>
+                        </li>
+                        <li>
+                            <span class="skill-icon">🐘</span>
+                            <span class="skill-name">PostgreSQL</span>
+                        </li>
+                        <li>
+                            <span class="skill-icon">🍃</span>
+                            <span class="skill-name">MongoDB</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Tools & DevOps -->
+                <div class="skill-category">
+                    <h3 class="skill-category-title">Tools & DevOps</h3>
+                    <ul class="skill-list">
+                        <li>
+                            <span class="skill-icon">📦</span>
+                            <span class="skill-name">Git / GitHub</span>
+                        </li>
+                        <li>
+                            <span class="skill-icon">🐳</span>
+                            <span class="skill-name">Docker</span>
+                        </li>
+                        <li>
+                            <span class="skill-icon">☁️</span>
+                            <span class="skill-name">AWS</span>
+                        </li>
+                        <li>
+                            <span class="skill-icon">🔄</span>
+                            <span class="skill-name">CI/CD</span>
+                        </li>
+                        <li>
+                            <span class="skill-icon">🧪</span>
+                            <span class="skill-name">Testing (Jest, Cypress)</span>
+                        </li>
+                        <li>
+                            <span class="skill-icon">⚡</span>
+                            <span class="skill-name">Webpack / Vite</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="contact-subtitle">
+                I'm always interested in hearing about interesting projects. Let's connect!
+            </p>
+
+            <div class="contact-content">
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="Your Name"
+                            required
+                            class="form-input"
+                        >
+                    </div>
+                    <div class="form-group">
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Your Email"
+                            required
+                            class="form-input"
+                        >
+                    </div>
+                    <div class="form-group">
+                        <textarea
+                            id="message"
+                            name="message"
+                            placeholder="Your Message"
+                            rows="5"
+                            required
+                            class="form-textarea"
+                        ></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-large">Send Message</button>
+                    <p class="form-note" id="formNote" style="display: none;"></p>
+                </form>
+
+                <div class="contact-info">
+                    <h3 class="contact-info-title">Other Ways to Connect</h3>
+                    <div class="social-links">
+                        <a href="https://github.com" class="social-link" title="GitHub" target="_blank" rel="noopener noreferrer">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                        <a href="https://linkedin.com" class="social-link" title="LinkedIn" target="_blank" rel="noopener noreferrer">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/>
+                            </svg>
+                        </a>
+                        <a href="https://twitter.com" class="social-link" title="Twitter" target="_blank" rel="noopener noreferrer">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2s9 5 20 5a9.5 9.5 0 00-9-5.5c4.75 2.25 7-7 7-7"/>
+                            </svg>
+                        </a>
+                        <a href="mailto:your.email@example.com" class="social-link" title="Email">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="4" width="20" height="16" rx="2"/>
+                                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <p class="contact-email">
+                        <strong>Email:</strong> <a href="mailto:your.email@example.com">your.email@example.com</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 John Doe. All rights reserved. Built with ❤️ and code.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
