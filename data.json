@@ -1,0 +1,154 @@
+{
+  "profile": {
+    "name": "Ethan VERT-FOREST",
+    "profileStatus": "available",
+    "title": "Backend Developer & Tech Enthusiast",
+    "description": "I'm Ethan, a third-year computer science student at EPITECH (2024-2029). I've been passionate about technology and coding since childhood, starting my journey with small projects in middle school. Now, I'm deeply engaged in the tech ecosystem, working on scalable backend solutions and exploring the latest technologies. Based in Toulouse, France, I'm driven by the challenge of solving complex problems through clean, collaborative code."
+  },
+  "aboutMe": {
+    "presentation": {
+      "content": "I'm a third-year computer science student at Epitech with a lifelong passion for technology. I've been coding since childhood and started building real projects in middle school. Today, I'm deeply invested in the tech ecosystem, constantly exploring new technologies, best practices, and ways to create elegant solutions to complex problems. I believe in continuous learning and the power of collaborative development."
+    },
+    "languages": {
+      "items": [
+        {
+          "name": "French",
+          "detail": "Native"
+        },
+        {
+          "name": "English",
+          "detail": "TOEIC score: 700"
+        }
+      ]
+    },
+    "softSkills": {
+      "items": [
+        {
+          "name": "Leadership",
+          "description": "Team coordination and decision-making",
+          "icon": "leadership"
+        },
+        {
+          "name": "Communication",
+          "description": "Clear and effective communication",
+          "icon": "communication"
+        },
+        {
+          "name": "Problem Solving",
+          "description": "Creative and analytical thinking",
+          "icon": "problem-solving"
+        },
+        {
+          "name": "Teamwork",
+          "description": "Collaborative and supportive approach",
+          "icon": "teamwork"
+        },
+        {
+          "name": "Adaptability",
+          "description": "Quick learner in new environments",
+          "icon": "adaptability"
+        },
+        {
+          "name": "Time Management",
+          "description": "Efficient project organization",
+          "icon": "time-management"
+        }
+      ]
+    },
+    "passions": {
+      "items": [
+        {
+          "name": "Athletics",
+          "detail": "Competitive level for 5 years"
+        },
+        {
+          "name": "Climbing",
+          "detail": "Competitive level for 4 years"
+        },
+        {
+          "name": "Volunteer at TGS 2025–2026",
+          "detail": "Community engagement and contribution"
+        }
+      ]
+    }
+  },
+  "experience": [
+    {
+      "id": 1,
+      "title": "Backend Developer (Internship)",
+      "company": "Bleemeo",
+      "dateStart": "Jul 2025",
+      "dateEnd": "Dec 2025",
+      "description": "Actively participated in backend development and tool improvement within the technical team. Created a Microsoft Teams bot for automated notifications, developed an MCP server for external API interaction with secure authentication, added features and fixed bugs on existing services, and collaborated on code reviews and technical documentation."
+    }
+  ],
+  "education": [
+    {
+      "id": 1,
+      "degree": "Engineering Degree in Computer Science",
+      "school": "EPITECH - Institut européen de technologie",
+      "dateStart": "2024",
+      "dateEnd": "2029",
+      "details": "Specializing in web development and backend technologies"
+    },
+    {
+      "id": 2,
+      "degree": "Baccalauréat général (General Studies)",
+      "school": "Lycée général Saint-Sernin",
+      "dateStart": "2021",
+      "dateEnd": "2024",
+      "details": "Honors: Mention bien (Honours degree)"
+    }
+  ],
+  "skillCategories": [
+    { "id": "languages", "title": "Programming Languages" },
+    { "id": "backend", "title": "Backend Frameworks & Tools" },
+    { "id": "tools", "title": "Development Tools" },
+    { "id": "debug", "title": "Debugging" }
+  ],
+  "certifications": [
+    {
+      "id": 1,
+      "title": "Backend Development & REST APIs",
+      "description": "Specialized expertise in Django and FastAPI"
+    },
+    {
+      "id": 2,
+      "title": "Python & Web Technologies",
+      "description": "Proficient in Python, JavaScript, and modern frameworks"
+    },
+    {
+      "id": 3,
+      "title": "Software Development Professional",
+      "description": "EPITECH Engineering Student • Ongoing Projects"
+    }
+  ],
+  "skills": {
+    "languages": [
+      { "name": "Python", "icon": "python" },
+      { "name": "C / CSFML", "icon": "c" },
+      { "name": "C++", "icon": "cpp" },
+      { "name": "Rust", "icon": "rust" },
+      { "name": "Haskell", "icon": "haskell" },
+      { "name": "Bash / Unix", "icon": "bash" }
+    ],
+    "backend": [
+      { "name": "Django REST Framework", "icon": "django" },
+      { "name": "OAuth & Authentication", "icon": "oauth" },
+      { "name": "SQL Databases", "icon": "sql" },
+      { "name": "RESTful APIs", "icon": "api" },
+      { "name": "API Design & Development", "icon": "api-design" }
+    ],
+    "tools": [
+      { "name": "Git & Version Control", "icon": "git" },
+      { "name": "VSCode", "icon": "vscode" },
+      { "name": "CLion IDE", "icon": "clion" },
+      { "name": "Makefile & Build Systems", "icon": "makefile" }
+    ],
+    "debug": [
+      { "name": "Valgrind & Memory Analysis", "icon": "valgrind" },
+      { "name": "AddressSanitizer (Libasan)", "icon": "libasan" },
+      { "name": "GDB Debugger", "icon": "gdb" }
+    ]
+  }
+}
