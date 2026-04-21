@@ -48,9 +48,9 @@ function translatePortfolioData() {
         if (portfolioData.aboutMe.languages?.items) {
             portfolioData.aboutMe.languages.items = portfolioData.aboutMe.languages.items.map(item => {
                 if (item.name === 'French') {
-                    return { ...item, detail: trans.native || item.detail };
+                    return { ...item, name: trans.french || 'French', detail: trans.native || item.detail };
                 } else if (item.name === 'English') {
-                    return { ...item, detail: trans.toeic || item.detail };
+                    return { ...item, name: trans.english || 'English', detail: trans.toeic || item.detail };
                 }
                 return item;
             });

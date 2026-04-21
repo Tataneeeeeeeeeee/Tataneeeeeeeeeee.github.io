@@ -75,6 +75,8 @@ const translations = {
         errorMessage: 'Something went wrong. Please try again later.',
         // Data translations
         profileStatus: 'Available',
+        french: 'French',
+        english: 'English',
         native: 'Native',
         toeic: 'TOEIC score: 700',
         leadership: 'Leadership',
@@ -153,6 +155,8 @@ const translations = {
         errorMessage: 'Une erreur est survenue. Veuillez réessayer plus tard.',
         // Data translations
         profileStatus: 'Disponible',
+        french: 'Français',
+        english: 'Anglais',
         native: 'Natif',
         toeic: 'Score TOEIC : 700',
         leadership: 'Leadership',
@@ -207,10 +211,10 @@ function initLanguage() {
 function toggleLanguage() {
     currentLanguage = currentLanguage === 'en' ? 'fr' : 'en';
     localStorage.setItem('language', currentLanguage);
-    setLanguage(currentLanguage);
+    setLanguage(currentLanguage).catch(err => console.error('Error changing language:', err));
 }
 
-function setLanguage(lang) {
+async function setLanguage(lang) {
     currentLanguage = lang;
     
     // Update language button
@@ -245,7 +249,9 @@ function setLanguage(lang) {
     
     // Reload and translate portfolio data
     if (typeof loadPortfolioData === 'function') {
-        loadPortfolioData();
+        await loadPortfolioData();
+        // Re-update section titles after data is loaded to ensure all elements are present
+        updateSectionTitles(lang);
     }
 }
 
@@ -253,7 +259,7 @@ function updateHeroSection(lang) {
     const heroTitle = document.querySelector('.hero-title .highlight');
     const heroSubtitle = document.querySelector('.hero-subtitle .subtitle-blue');
     const statLabels = document.querySelectorAll('.stat-label');
-    const btnTexts = document.querySelectorAll('.btn span:first-child');
+    const heroButtons = document.querySelectorAll('.hero-buttons .btn span:first-child');
     
     if (heroTitle) heroTitle.textContent = translations[lang].heroTitle;
     if (heroSubtitle) heroSubtitle.textContent = translations[lang].heroSubtitle;
@@ -261,6 +267,10 @@ function updateHeroSection(lang) {
     if (statLabels[0]) statLabels[0].textContent = translations[lang].yearsOfCoding;
     if (statLabels[1]) statLabels[1].textContent = translations[lang].projectsDone;
     if (statLabels[2]) statLabels[2].textContent = translations[lang].technologies;
+    
+    // Update hero buttons
+    if (heroButtons[0]) heroButtons[0].textContent = translations[lang].viewMyWork;
+    if (heroButtons[1]) heroButtons[1].textContent = translations[lang].getInTouch;
 }
 
 function updateSectionTitles(lang) {

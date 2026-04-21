@@ -12,7 +12,7 @@ const GITHUB_CONFIG = {
     username: 'Tataneeeeeeeeeee',                    // Votre username GitHub
     organization: 'JJE-Corpo',                       // Votre organisation GitHub (optionnel)
     maxProjects: 50,                                  // Nombre max de projets à afficher
-    excludeRepos: ['Tataneeeeeeeeeeeeeee.github.io', '.github'],   // Repos à ignorer
+    excludeRepos: ['Tataneeeeeeeeeee.github.io', '.github'],   // Repos à ignorer
     sortBy: 'stars',                                 // 'stars', 'updated', 'name', 'pushed'
 };
 

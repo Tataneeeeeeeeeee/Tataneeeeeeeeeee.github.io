@@ -174,8 +174,10 @@ img {
 }
 
 .btn-large {
-    padding: var(--spacing-md) var(--spacing-2xl);
+    padding: var(--spacing-lg) var(--spacing-2xl);
     font-size: var(--font-size-lg);
+    width: 100%;
+    min-height: 70px;
 }
 
 /* ===========================
