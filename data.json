@@ -109,18 +109,13 @@
   "certifications": [
     {
       "id": 1,
-      "title": "Backend Development & REST APIs",
-      "description": "Specialized expertise in Django and FastAPI"
+      "title": "Software Development Professional",
+      "description": "EPITECH Engineering Student • Ongoing Projects"
     },
     {
       "id": 2,
-      "title": "Python & Web Technologies",
-      "description": "Proficient in Python, JavaScript, and modern frameworks"
-    },
-    {
-      "id": 3,
-      "title": "Software Development Professional",
-      "description": "EPITECH Engineering Student • Ongoing Projects"
+      "title": "General A-levels",
+      "description": "Lycée général Saint-Sernin, Toulouse • 2024"
     }
   ],
   "skills": {

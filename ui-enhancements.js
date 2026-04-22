@@ -179,14 +179,27 @@ function initProjectDetailModal() {
                                 </div>
                             </div>
                             <div class="stat-item">
-                                <span class="stat-icon">🍴</span>
+                                <span class="stat-icon">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="18" r="3"></circle>
+                                        <circle cx="6" cy="6" r="3"></circle>
+                                        <circle cx="18" cy="6" r="3"></circle>
+                                        <path d="M18 9v2c0 .5-.5 1-1 1H7c-.5 0-1-.5-1-1V9"></path>
+                                        <path d="M12 12v6"></path>
+                                    </svg>
+                                </span>
                                 <div>
                                     <p class="stat-label">Forks</p>
                                     <p class="stat-value" id="modalForks">0</p>
                                 </div>
                             </div>
                             <div class="stat-item">
-                                <span class="stat-icon">👁️</span>
+                                <span class="stat-icon">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                    </svg>
+                                </span>
                                 <div>
                                     <p class="stat-label">Watchers</p>
                                     <p class="stat-value" id="modalWatchers">0</p>
@@ -459,6 +472,10 @@ async function fetchProjectDetails(projectData) {
     console.log('📥 Fetching project details for ' + repo + ' (' + owner + ')');
     
     try {
+        // Fetch updated stats (stars, forks, watchers)
+        await fetchProjectStats(owner, repo);
+        console.log('✅ Stats fetched');
+        
         // Fetch releases
         await fetchProjectReleases(owner, repo);
         console.log('✅ Releases fetched');
@@ -468,6 +485,34 @@ async function fetchProjectDetails(projectData) {
         console.log('✅ README fetched');
     } catch (err) {
         console.error('❌ Error fetching project details:', err);
+    }
+}
+
+/**
+ * Fetches and updates the real-time stats for a project
+ * @param {string} owner - GitHub username
+ * @param {string} repo - Repository name
+ */
+async function fetchProjectStats(owner, repo) {
+    try {
+        const url = `https://api.github.com/repos/${owner}/${repo}`;
+        const response = await fetch(url);
+        
+        if (!response.ok) {
+            console.warn(`⚠️ Could not fetch updated stats for ${repo}`);
+            return;
+        }
+        
+        const repoData = await response.json();
+        
+        // Update modal stats with fresh data
+        document.getElementById('modalStars').textContent = formatNumber(repoData.stargazers_count || 0);
+        document.getElementById('modalForks').textContent = formatNumber(repoData.forks_count || 0);
+        document.getElementById('modalWatchers').textContent = formatNumber(repoData.watchers_count || 0);
+        
+        console.log(`📊 Updated stats for ${repo}: ⭐ ${repoData.stargazers_count} 📦 ${repoData.forks_count} 🔔 ${repoData.watchers_count}`);
+    } catch (err) {
+        console.warn('⚠️ Error fetching project stats:', err);
     }
 }
 

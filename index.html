@@ -266,7 +266,7 @@
                         </svg>
                         <span>LinkedIn</span>
                     </a>
-                    <a href="ethan.vert-forest@epitech.eu" class="contact-social-btn email-btn" title="Email">
+                    <a href="javascript:void(0)" onclick="window.location.href='mailto:ethan.vert-forest@epitech.eu'" class="contact-social-btn email-btn" title="Email" style="cursor: pointer;">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <rect x="2" y="4" width="20" height="16" rx="2"/>
                             <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
@@ -279,7 +279,7 @@
             <!-- Contact Form -->
             <div class="contact-content">
                 <h3 class="contact-form-title">Send Me a Message</h3>
-                <form class="contact-form" id="contactForm">
+                <form class="contact-form" id="contactForm" action="https://formsubmit.co/ajax/ethan.vert-forest@epitech.eu" method="POST">
                     <div class="form-group">
                         <input
                             type="text"
@@ -310,6 +310,7 @@
                             class="form-textarea"
                         ></textarea>
                     </div>
+                    <input type="hidden" name="_captcha" value="false">
                     <button type="submit" class="btn btn-primary btn-large">Send Message</button>
                     <p class="form-note" id="formNote" style="display: none;"></p>
                 </form>
@@ -324,6 +325,7 @@
         </div>
     </footer>
 
+    <script src="translation-helper.js"></script>
     <script src="data-loader.js"></script>
     <script src="script.js"></script>
     <script src="icons.js"></script>

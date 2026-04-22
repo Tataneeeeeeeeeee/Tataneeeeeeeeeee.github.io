@@ -203,7 +203,40 @@ const translations = {
 
 let currentLanguage = localStorage.getItem('language') || 'en';
 
-function initLanguage() {
+/**
+ * Helper function to safely get a translation from translationsData or fallback to hardcoded
+ */
+function getTranslationValue(path, lang = currentLanguage) {
+    // If translationsData is available, use it
+    if (typeof translationsData !== 'undefined' && translationsData) {
+        const result = getTranslation(path, lang);
+        if (result && result !== path) {
+            return result;
+        }
+    }
+    
+    // Fallback to hardcoded translations if translationsData not available
+    const keys = path.split('.');
+    const source = translations[lang] || {};
+    let current = source;
+    
+    for (let key of keys) {
+        if (current && typeof current === 'object' && key in current) {
+            current = current[key];
+        } else {
+            return path;
+        }
+    }
+    
+    return current || path;
+}
+
+async function initLanguage() {
+    // Load translations from file
+    if (typeof loadTranslations === 'function') {
+        await loadTranslations();
+    }
+    
     setLanguage(currentLanguage);
     DOM.languageToggle?.addEventListener('click', toggleLanguage);
 }
@@ -224,12 +257,12 @@ async function setLanguage(lang) {
     
     // Update navigation links
     const navTexts = {
-        home: translations[lang].home,
-        about: translations[lang].about,
-        career: translations[lang].career,
-        projects: translations[lang].projects,
-        skills: translations[lang].skills,
-        contact: translations[lang].contact
+        home: getTranslationValue('ui.home', lang),
+        about: getTranslationValue('ui.about', lang),
+        career: getTranslationValue('ui.career', lang),
+        projects: getTranslationValue('ui.projects', lang),
+        skills: getTranslationValue('ui.skills', lang),
+        contact: getTranslationValue('ui.contact', lang)
     };
     
     DOM.navLinks.forEach(link => {
@@ -261,31 +294,31 @@ function updateHeroSection(lang) {
     const statLabels = document.querySelectorAll('.stat-label');
     const heroButtons = document.querySelectorAll('.hero-buttons .btn span:first-child');
     
-    if (heroTitle) heroTitle.textContent = translations[lang].heroTitle;
-    if (heroSubtitle) heroSubtitle.textContent = translations[lang].heroSubtitle;
+    if (heroTitle) heroTitle.textContent = getTranslationValue('ui.heroTitle', lang);
+    if (heroSubtitle) heroSubtitle.textContent = getTranslationValue('ui.heroSubtitle', lang);
     
-    if (statLabels[0]) statLabels[0].textContent = translations[lang].yearsOfCoding;
-    if (statLabels[1]) statLabels[1].textContent = translations[lang].projectsDone;
-    if (statLabels[2]) statLabels[2].textContent = translations[lang].technologies;
+    if (statLabels[0]) statLabels[0].textContent = getTranslationValue('ui.yearsOfCoding', lang);
+    if (statLabels[1]) statLabels[1].textContent = getTranslationValue('ui.projectsDone', lang);
+    if (statLabels[2]) statLabels[2].textContent = getTranslationValue('ui.technologies', lang);
     
     // Update hero buttons
-    if (heroButtons[0]) heroButtons[0].textContent = translations[lang].viewMyWork;
-    if (heroButtons[1]) heroButtons[1].textContent = translations[lang].getInTouch;
+    if (heroButtons[0]) heroButtons[0].textContent = getTranslationValue('ui.viewMyWork', lang);
+    if (heroButtons[1]) heroButtons[1].textContent = getTranslationValue('ui.getInTouch', lang);
 }
 
 function updateSectionTitles(lang) {
     const sectionTitles = document.querySelectorAll('.section-title');
     sectionTitles.forEach(title => {
         if (title.textContent.includes('About')) {
-            title.textContent = translations[lang].aboutMe;
+            title.textContent = getTranslationValue('ui.aboutMe', lang);
         } else if (title.textContent.includes('Career')) {
-            title.textContent = translations[lang].careerEducation;
+            title.textContent = getTranslationValue('ui.careerEducation', lang);
         } else if (title.textContent.includes('Featured')) {
-            title.textContent = translations[lang].featuredProjects;
+            title.textContent = getTranslationValue('ui.featuredProjects', lang);
         } else if (title.textContent.includes('Skills')) {
-            title.textContent = translations[lang].skillsTechnologies;
+            title.textContent = getTranslationValue('ui.skillsTechnologies', lang);
         } else if (title.textContent.includes('Get In Touch')) {
-            title.textContent = translations[lang].getInTouchSection;
+            title.textContent = getTranslationValue('ui.getInTouchSection', lang);
         }
     });
     
@@ -293,21 +326,21 @@ function updateSectionTitles(lang) {
     const aboutTabs = document.querySelectorAll('.about-tab-btn');
     aboutTabs.forEach(tab => {
         const dataTab = tab.getAttribute('data-tab');
-        if (dataTab === 'presentation') tab.textContent = translations[lang].presentation;
-        else if (dataTab === 'languages') tab.textContent = translations[lang].languages;
-        else if (dataTab === 'softSkills') tab.textContent = translations[lang].softSkills;
-        else if (dataTab === 'passions') tab.textContent = translations[lang].passions;
+        if (dataTab === 'presentation') tab.textContent = getTranslationValue('ui.presentation', lang);
+        else if (dataTab === 'languages') tab.textContent = getTranslationValue('ui.languages', lang);
+        else if (dataTab === 'softSkills') tab.textContent = getTranslationValue('ui.softSkills', lang);
+        else if (dataTab === 'passions') tab.textContent = getTranslationValue('ui.passions', lang);
     });
     
     // Update card titles
     const cardTitles = document.querySelectorAll('.card-title');
     cardTitles.forEach(title => {
         if (title.textContent.includes('Professional')) {
-            title.innerHTML = title.innerHTML.replace(/Professional Experience/, translations[lang].professionalExperience);
+            title.innerHTML = title.innerHTML.replace(/Professional Experience/, getTranslationValue('ui.professionalExperience', lang));
         } else if (title.textContent.includes('Education')) {
-            title.innerHTML = title.innerHTML.replace(/Education/, translations[lang].education);
+            title.innerHTML = title.innerHTML.replace(/Education/, getTranslationValue('ui.education', lang));
         } else if (title.textContent.includes('Certifications')) {
-            title.innerHTML = title.innerHTML.replace(/Certifications.*/, translations[lang].certificationsAchievements);
+            title.innerHTML = title.innerHTML.replace(/Certifications.*/, getTranslationValue('ui.certificationsAchievements', lang));
         }
     });
 }
@@ -321,15 +354,15 @@ function updateFormText(lang) {
     const formTitle = document.querySelector('.contact-form-title');
     const socialTitle = document.querySelector('.contact-links-title');
     
-    if (nameInput) nameInput.placeholder = translations[lang].yourName;
-    if (emailInput) emailInput.placeholder = translations[lang].yourEmail;
-    if (messageInput) messageInput.placeholder = translations[lang].yourMessage;
-    if (sendBtn) sendBtn.textContent = translations[lang].sendButton;
+    if (nameInput) nameInput.placeholder = getTranslationValue('ui.yourName', lang);
+    if (emailInput) emailInput.placeholder = getTranslationValue('ui.yourEmail', lang);
+    if (messageInput) messageInput.placeholder = getTranslationValue('ui.yourMessage', lang);
+    if (sendBtn) sendBtn.textContent = getTranslationValue('ui.sendButton', lang);
     if (formTitle) {
-        formTitle.textContent = translations[lang].sendMessage;
+        formTitle.textContent = getTranslationValue('ui.sendMessage', lang);
     }
     if (socialTitle) {
-        socialTitle.textContent = translations[lang].connectWithMe;
+        socialTitle.textContent = getTranslationValue('ui.connectWithMe', lang);
     }
 }
 
@@ -396,11 +429,30 @@ async function handleFormSubmit(e) {
     }
     
     try {
-        await simulateFormSubmission(formData);
-        showFormMessage(translations[currentLanguage].thankYouMessage, 'success');
-        DOM.contactForm?.reset();
+        // Send data via FormSubmit
+        const response = await fetch('https://formsubmit.co/ajax/ethan.vert-forest@epitech.eu', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+                name: formData.name,
+                email: formData.email,
+                message: formData.message,
+                _captcha: false
+            })
+        });
+        
+        if (response.ok) {
+            showFormMessage(getTranslationValue('ui.thankYouMessage', currentLanguage), 'success');
+            DOM.contactForm?.reset();
+        } else {
+            throw new Error('Failed to send message');
+        }
     } catch (error) {
-        showFormMessage(translations[currentLanguage].errorMessage, 'error');
+        console.error('Form submission error:', error);
+        showFormMessage(getTranslationValue('ui.errorMessage', currentLanguage), 'error');
     }
 }
 

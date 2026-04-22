@@ -360,11 +360,11 @@ function createProjectCard(repo) {
                 
                 ${repo.forks_count > 0 ? `
                     <span class="project-stat">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="6" cy="5" r="2"></circle>
-                            <circle cx="18" cy="5" r="2"></circle>
-                            <circle cx="12" cy="18" r="2"></circle>
-                            <path d="M6 7v5c0 1.657 1.343 3 3 3h6c1.657 0 3-1.343 3-3V7"></path>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="18" r="3"></circle>
+                            <circle cx="6" cy="6" r="3"></circle>
+                            <circle cx="18" cy="6" r="3"></circle>
+                            <path d="M18 9v2c0 .5-.5 1-1 1H7c-.5 0-1-.5-1-1V9"></path>
                             <path d="M12 12v6"></path>
                         </svg>
                         ${formatNumber(repo.forks_count)}
@@ -373,9 +373,9 @@ function createProjectCard(repo) {
                 
                 ${repo.subscribers_count > 0 ? `
                     <span class="project-stat">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
-                            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
                         </svg>
                         ${formatNumber(repo.subscribers_count)}
                     </span>

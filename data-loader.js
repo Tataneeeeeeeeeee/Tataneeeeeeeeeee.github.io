@@ -21,111 +21,72 @@ function getTranslatedText(key) {
     return key;
 }
 
-// Function to translate portfolio data
+// Function to translate portfolio data - MODULAR SYSTEM
 function translatePortfolioData() {
-    if (!originalPortfolioData) return;
+    if (!originalPortfolioData || !translationsData) return;
     
     // Deep clone the original data
     portfolioData = JSON.parse(JSON.stringify(originalPortfolioData));
     
     const lang = typeof currentLanguage !== 'undefined' ? currentLanguage : 'en';
-    const trans = typeof translations !== 'undefined' ? translations[lang] : {};
     
-    // Translate profile status and description
+    // Translate profile
     if (portfolioData?.profile) {
-        portfolioData.profile.profileStatus = trans.profileStatus || portfolioData.profile.profileStatus;
-        portfolioData.profile.description = trans.heroDescription || portfolioData.profile.description;
+        portfolioData.profile.profileStatus = getTranslation('ui.profileStatus', lang);
+        portfolioData.profile.description = getTranslation('data.heroDescription', lang);
     }
     
     // Translate about me section
     if (portfolioData?.aboutMe) {
         // Presentation
         if (portfolioData.aboutMe.presentation) {
-            portfolioData.aboutMe.presentation.content = trans.presentationContent || portfolioData.aboutMe.presentation.content;
+            portfolioData.aboutMe.presentation.content = getTranslation('data.presentationContent', lang);
         }
         
-        // Languages
+        // Languages - now modular, any language can be added to data.json
         if (portfolioData.aboutMe.languages?.items) {
-            portfolioData.aboutMe.languages.items = portfolioData.aboutMe.languages.items.map(item => {
-                if (item.name === 'French') {
-                    return { ...item, name: trans.french || 'French', detail: trans.native || item.detail };
-                } else if (item.name === 'English') {
-                    return { ...item, name: trans.english || 'English', detail: trans.toeic || item.detail };
-                }
-                return item;
-            });
+            portfolioData.aboutMe.languages.items = portfolioData.aboutMe.languages.items.map(item => 
+                translateDataItem(item, 'data.languages', lang)
+            );
         }
         
-        // Soft Skills
+        // Soft Skills - modular, any skill can be added to data.json
         if (portfolioData.aboutMe.softSkills?.items) {
-            portfolioData.aboutMe.softSkills.items = portfolioData.aboutMe.softSkills.items.map(skill => {
-                const skillMap = {
-                    'Leadership': { name: trans.leadership || 'Leadership', description: trans.teamCoordination || skill.description },
-                    'Communication': { name: trans.communication || 'Communication', description: trans.clearEffective || skill.description },
-                    'Problem Solving': { name: trans.problemSolving || 'Problem Solving', description: trans.creativeAnalytical || skill.description },
-                    'Teamwork': { name: trans.teamwork || 'Teamwork', description: trans.collaborativeSupport || skill.description },
-                    'Adaptability': { name: trans.adaptability || 'Adaptability', description: trans.quickLearner || skill.description },
-                    'Time Management': { name: trans.timeManagement || 'Time Management', description: trans.efficientProject || skill.description }
-                };
-                return skillMap[skill.name] || skill;
-            });
+            portfolioData.aboutMe.softSkills.items = portfolioData.aboutMe.softSkills.items.map(skill => 
+                translateDataItem(skill, 'data.softSkills', lang)
+            );
         }
         
-        // Passions
+        // Passions - modular, any passion can be added to data.json
         if (portfolioData.aboutMe.passions?.items) {
-            portfolioData.aboutMe.passions.items = portfolioData.aboutMe.passions.items.map(passion => {
-                const passionMap = {
-                    'Athletics': { name: trans.athletics || 'Athletics', detail: trans.competitiveAthletics || passion.detail },
-                    'Climbing': { name: trans.climbing || 'Climbing', detail: trans.competitiveClimbing || passion.detail },
-                    'Volunteer at TGS 2025–2026': { name: trans.volunteerTGS || 'Volunteer at TGS 2025–2026', detail: trans.communityEngagement || passion.detail }
-                };
-                return passionMap[passion.name] || passion;
-            });
+            portfolioData.aboutMe.passions.items = portfolioData.aboutMe.passions.items.map(passion => 
+                translateDataItem(passion, 'data.passions', lang)
+            );
         }
     }
     
-    // Translate experience
+    // Translate experience - modular
     if (portfolioData?.experience) {
-        portfolioData.experience = portfolioData.experience.map(exp => {
-            if (exp.title === 'Backend Developer (Internship)') {
-                return {
-                    ...exp,
-                    title: trans.backendDeveloper || exp.title,
-                    company: trans.bleemeo || exp.company,
-                    description: trans.bleemeoDesc || exp.description
-                };
-            }
-            return exp;
-        });
+        portfolioData.experience = portfolioData.experience.map(exp => 
+            translateDataItem(exp, 'data.experience', lang)
+        );
     }
     
-    // Translate education
+    // Translate education - modular
     if (portfolioData?.education) {
-        portfolioData.education = portfolioData.education.map(edu => {
-            const eduMap = {
-                'Engineering Degree in Computer Science': { degree: trans.engineeringDegree || edu.degree, details: trans.speakingWeb || edu.details },
-                'Baccalauréat général (General Studies)': { degree: trans.baccalaureate || edu.degree, details: trans.honors || edu.details }
-            };
-            if (eduMap[edu.degree]) {
-                return { ...edu, ...eduMap[edu.degree] };
-            }
-            if (edu.school === 'EPITECH - Institut européen de technologie') {
-                edu.school = trans.epitech || edu.school;
-            } else if (edu.school === 'Lycée général Saint-Sernin') {
-                edu.school = trans.lycee || edu.school;
-            }
-            return edu;
-        });
+        portfolioData.education = portfolioData.education.map(edu => 
+            translateDataItem(edu, 'data.education', lang)
+        );
     }
     
     // Translate skill categories
     if (portfolioData?.skillCategories) {
         portfolioData.skillCategories = portfolioData.skillCategories.map(cat => {
             const catMap = {
-                'languages': trans.programmingLanguages || cat.title,
-                'backend': trans.backendFrameworks || cat.title,
-                'tools': trans.developmentTools || cat.title,
-                'debug': trans.debugging || cat.title
+                'languages': getTranslation('data.skills.Programming Languages', lang) || cat.title,
+                'backend': getTranslation('data.skills.Backend Frameworks', lang) || cat.title,
+                'tools': getTranslation('data.skills.Development Tools', lang) || cat.title,
+                'debug': getTranslation('data.skills.Debugging', lang) || cat.title
             };
             return { ...cat, title: catMap[cat.id] || cat.title };
         });
@@ -135,9 +96,9 @@ function translatePortfolioData() {
     if (portfolioData?.certifications) {
         portfolioData.certifications = portfolioData.certifications.map(cert => {
             const certMap = {
-                'Backend Development & REST APIs': { title: trans.backendRest || cert.title, description: trans.specializedExpertise || cert.description },
-                'Python & Web Technologies': { title: trans.pythonWeb || cert.title, description: trans.proficientPython || cert.description },
-                'Software Development Professional': { title: trans.softwareDeveloper || cert.title, description: trans.epitechStudent || cert.description }
+                'Backend Development & REST APIs': { title: getTranslation('data.skills.Backend Development', lang) || cert.title, description: cert.description },
+                'Python & Web Technologies': { title: cert.title, description: cert.description },
+                'Software Development Professional': { title: cert.title, description: cert.description }
             };
             return certMap[cert.title] || cert;
         });

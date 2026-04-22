@@ -1,0 +1,230 @@
+{
+  "en": {
+    "ui": {
+      "home": "Home",
+      "about": "About",
+      "career": "Career",
+      "projects": "Projects",
+      "skills": "Skills",
+      "contact": "Contact",
+      "heroTitle": "Ethan VERT-FOREST",
+      "heroSubtitle": "Backend Developer & Tech Enthusiast",
+      "viewMyWork": "View My Work",
+      "getInTouch": "Get In Touch",
+      "yearsOfCoding": "Years Coding",
+      "projectsDone": "Projects Done",
+      "technologies": "Technologies",
+      "aboutMe": "About Me",
+      "presentation": "Presentation",
+      "languages": "Languages",
+      "softSkills": "Soft Skills",
+      "passions": "Passions",
+      "careerEducation": "Career & Education",
+      "professionalExperience": "Professional Experience",
+      "education": "Education",
+      "certificationsAchievements": "Certifications & Achievements",
+      "featuredProjects": "Featured Projects",
+      "skillsTechnologies": "Skills & Technologies",
+      "getInTouchSection": "Get In Touch",
+      "connectWithMe": "Connect With Me",
+      "sendMessage": "Send Me a Message",
+      "yourName": "Your Name",
+      "yourEmail": "Your Email",
+      "yourMessage": "Your message...",
+      "sendButton": "Send Message",
+      "thankYouMessage": "Thank you! Your message has been sent successfully.",
+      "errorMessage": "Something went wrong. Please try again later.",
+      "profileStatus": "Available"
+    },
+    "data": {
+      "languages": {
+        "French": "French",
+        "English": "English"
+      },
+      "languageDetails": {
+        "Native": "Native",
+        "TOEIC score: 700": "TOEIC score: 700"
+      },
+      "softSkills": {
+        "Leadership": {
+          "name": "Leadership",
+          "description": "Team coordination and decision-making"
+        },
+        "Communication": {
+          "name": "Communication",
+          "description": "Clear and effective communication"
+        },
+        "Problem Solving": {
+          "name": "Problem Solving",
+          "description": "Creative and analytical thinking"
+        },
+        "Teamwork": {
+          "name": "Teamwork",
+          "description": "Collaborative and supportive approach"
+        },
+        "Adaptability": {
+          "name": "Adaptability",
+          "description": "Quick learner in new environments"
+        },
+        "Time Management": {
+          "name": "Time Management",
+          "description": "Efficient project organization"
+        }
+      },
+      "passions": {
+        "Athletics": {
+          "name": "Athletics",
+          "detail": "Competitive level for 5 years"
+        },
+        "Climbing": {
+          "name": "Climbing",
+          "detail": "Competitive level for 4 years"
+        },
+        "Volunteer at TGS 2025–2026": {
+          "name": "Volunteer at TGS 2025–2026",
+          "detail": "Community engagement and contribution"
+        }
+      },
+      "experience": {
+        "Backend Developer (Internship)": {
+          "title": "Backend Developer (Internship)",
+          "company": "Bleemeo",
+          "description": "Actively participated in backend development and tool improvement within the technical team. Created a Microsoft Teams bot for automated notifications, developed an MCP server for external API interaction with secure authentication, added features and fixed bugs on existing services, and collaborated on code reviews and technical documentation."
+        }
+      },
+      "education": {
+        "Engineering Degree in Computer Science": {
+          "degree": "Engineering Degree in Computer Science",
+          "details": "Specializing in web development and backend technologies"
+        },
+        "Baccalauréat général (General Studies)": {
+          "degree": "Baccalauréat général (General Studies)",
+          "details": "Honors: Mention bien (Honours degree)"
+        }
+      },
+      "skills": {
+        "Programming Languages": "Programming Languages",
+        "Backend Frameworks": "Backend Frameworks & Tools",
+        "Development Tools": "Development Tools",
+        "Debugging": "Debugging",
+        "Backend Development": "Backend Development & REST APIs"
+      },
+      "heroDescription": "I'm Ethan, a third-year computer science student at EPITECH (2024-2029). I've been passionate about technology and coding since childhood, starting my journey with small projects in middle school. Now, I'm deeply engaged in the tech ecosystem, working on scalable backend solutions and exploring the latest technologies. Based in Toulouse, France, I'm driven by the challenge of solving complex problems through clean, collaborative code.",
+      "presentationContent": "I'm a third-year computer science student at Epitech with a lifelong passion for technology. I've been coding since childhood and started building real projects in middle school. Today, I'm deeply invested in the tech ecosystem, constantly exploring new technologies, best practices, and ways to create elegant solutions to complex problems. I believe in continuous learning and the power of collaborative development."
+    }
+  },
+  "fr": {
+    "ui": {
+      "home": "Accueil",
+      "about": "À propos",
+      "career": "Carrière",
+      "projects": "Projets",
+      "skills": "Compétences",
+      "contact": "Contact",
+      "heroTitle": "Ethan VERT-FOREST",
+      "heroSubtitle": "Développeur Backend & Passionné par la Technologie",
+      "viewMyWork": "Voir mon travail",
+      "getInTouch": "Entrer en contact",
+      "yearsOfCoding": "Ans de codage",
+      "projectsDone": "Projets réalisés",
+      "technologies": "Technologies",
+      "aboutMe": "À propos de moi",
+      "presentation": "Présentation",
+      "languages": "Langues",
+      "softSkills": "Compétences non techniques",
+      "passions": "Passions",
+      "careerEducation": "Carrière & Éducation",
+      "professionalExperience": "Expérience professionnelle",
+      "education": "Éducation",
+      "certificationsAchievements": "Certifications & Réalisations",
+      "featuredProjects": "Projets en vedette",
+      "skillsTechnologies": "Compétences & Technologies",
+      "getInTouchSection": "Entrer en contact",
+      "connectWithMe": "Connectez-vous avec moi",
+      "sendMessage": "Envoyez-moi un message",
+      "yourName": "Votre nom",
+      "yourEmail": "Votre email",
+      "yourMessage": "Votre message...",
+      "sendButton": "Envoyer le message",
+      "thankYouMessage": "Merci ! Votre message a été envoyé avec succès.",
+      "errorMessage": "Une erreur est survenue. Veuillez réessayer plus tard.",
+      "profileStatus": "Disponible"
+    },
+    "data": {
+      "languages": {
+        "French": "Français",
+        "English": "Anglais"
+      },
+      "languageDetails": {
+        "Native": "Natif",
+        "TOEIC score: 700": "Score TOEIC : 700"
+      },
+      "softSkills": {
+        "Leadership": {
+          "name": "Leadership",
+          "description": "Coordination d'équipe et prise de décision"
+        },
+        "Communication": {
+          "name": "Communication",
+          "description": "Communication claire et efficace"
+        },
+        "Problem Solving": {
+          "name": "Résolution de problèmes",
+          "description": "Réflexion créative et analytique"
+        },
+        "Teamwork": {
+          "name": "Travail en équipe",
+          "description": "Approche collaborative et solidaire"
+        },
+        "Adaptability": {
+          "name": "Adaptabilité",
+          "description": "Apprenti rapide dans de nouveaux environnements"
+        },
+        "Time Management": {
+          "name": "Gestion du temps",
+          "description": "Organisation efficace des projets"
+        }
+      },
+      "passions": {
+        "Athletics": {
+          "name": "Athlétisme",
+          "detail": "Niveau compétitif depuis 5 ans"
+        },
+        "Climbing": {
+          "name": "Escalade",
+          "detail": "Niveau compétitif depuis 4 ans"
+        },
+        "Volunteer at TGS 2025–2026": {
+          "name": "Bénévole à TGS 2025–2026",
+          "detail": "Engagement communautaire et contribution"
+        }
+      },
+      "experience": {
+        "Backend Developer (Internship)": {
+          "title": "Développeur Backend (Stage)",
+          "company": "Bleemeo",
+          "description": "Participation active au développement backend et à l'amélioration des outils au sein de l'équipe technique. Création d'un bot Microsoft Teams pour les notifications automatisées, développement d'un serveur MCP pour l'interaction avec des API externes avec authentification sécurisée, ajout de fonctionnalités et correction de bugs sur les services existants, et collaboration sur les revues de code et la documentation technique."
+        }
+      },
+      "education": {
+        "Engineering Degree in Computer Science": {
+          "degree": "Diplôme d'ingénieur en informatique",
+          "details": "Spécialisation en développement web et technologies backend"
+        },
+        "Baccalauréat général (General Studies)": {
+          "degree": "Baccalauréat général",
+          "details": "Mentions : Mention bien (Diplôme avec distinction)"
+        }
+      },
+      "skills": {
+        "Programming Languages": "Langages de programmation",
+        "Backend Frameworks": "Frameworks & Outils Backend",
+        "Development Tools": "Outils de développement",
+        "Debugging": "Débogage",
+        "Backend Development": "Développement Backend & APIs REST"
+      },
+      "heroDescription": "Je suis Ethan, étudiant en troisième année d'informatique à EPITECH (2024-2029). Je suis passionné par la technologie et le codage depuis l'enfance, ayant commencé mon parcours avec de petits projets au collège. Aujourd'hui, je suis profondément impliqué dans l'écosystème technologique, travaillant sur des solutions backend évolutives et explorant les dernières technologies. Basé à Toulouse, en France, je suis motivé par le défi de résoudre des problèmes complexes grâce à un code propre et collaboratif.",
+      "presentationContent": "Je suis étudiant en troisième année d'informatique à EPITECH avec une passion de toute une vie pour la technologie. J'ai commencé à coder depuis l'enfance et j'ai construit mes premiers vrais projets au collège. Aujourd'hui, je suis profondément investi dans l'écosystème technologique, explorant constamment les nouvelles technologies, les meilleures pratiques et les moyens de créer des solutions élégantes à des problèmes complexes. Je crois à l'apprentissage continu et au pouvoir du développement collaboratif."
+    }
+  }
+}
