@@ -1,376 +1,163 @@
-# 🎯 Professional Developer Portfolio
+# Portfolio
 
-A modern, fully responsive portfolio website built with vanilla HTML, CSS, and JavaScript. No dependencies, no build tools required.
+Single-page developer portfolio, themed **"Nuit Lavande"** — a soft violet night:
+pale lavender and peach accents, very diffuse halos and frosted glass.
+Profile content comes from `data.json`; project content is pulled live from the
+GitHub REST API. Dark and light themes, English and French — the French content
+is machine-translated at runtime and cached.
 
-## ✨ Key Features
+## Run it
 
-✅ **Responsive Design** - Mobile-friendly on all devices  
-✅ **Dark/Light Mode** - Theme toggle with localStorage persistence  
-✅ **Auto-Load GitHub Projects** - Dynamically fetch and display your repos  
-✅ **Skills with Icons** - SVG icons from Devicon for professional appearance  
-✅ **Smooth Animations** - Modern UI with CSS transitions  
-✅ **JSON Data System** - Centralized, modular data management  
-✅ **Contact Form** - Functional email contact with validation  
-✅ **Zero Dependencies** - 100% vanilla HTML, CSS, JavaScript  
+The app uses ES modules and `fetch`, so it needs to be served over HTTP —
+opening `index.html` from the file system will not work.
 
----
-
-## 🚀 Quick Start
-
-### 1. Local Development
 ```bash
-# Simply open in browser or run a local server
-python -m http.server 8000
-# Then visit http://localhost:8000
+python3 -m http.server 8000
+# then open http://localhost:8000
 ```
 
-### 2. Configure GitHub Projects
-Edit `github-projects.js` and update:
-```javascript
-const GITHUB_CONFIG = {
-    username: 'your-github-username',  // ← YOUR USERNAME
-    maxProjects: 6,
-    excludeRepos: [],
-    sortBy: 'stars'
-};
-```
+Any static host works (GitHub Pages, Netlify, Vercel) — there is no build step.
 
-### 3. Update Your Data
-Edit `data.json` with your portfolio information:
-- Profile (name, title, bio)
-- Experience (jobs, internships)
-- Education (degrees)
-- Certifications (achievements)
-- Skills (organized by category)
+## Configuration
 
-### 4. Deploy to GitHub Pages
-```bash
-git remote add origin https://github.com/yourusername/yourusername.github.io.git
-git branch -M main
-git push -u origin main
-```
+Everything tweakable lives in [`js/config.js`](js/config.js):
 
----
+| Key | Meaning |
+| --- | --- |
+| `githubUsername` | Personal account shown under **Personal Projects** |
+| `githubOrg` | Organisation whose repos are merged into **Personal Projects** (login `JJE-Corpo`) |
+| `orgLabel` | Badge text shown on cards coming from that organisation |
+| `githubToken` | Optional read-only PAT — raises the API quota from 60 to 5000 req/hour |
+| `hiddenRepos` / `hideForks` | Repos to keep out of the grids |
+| `cacheTtlMinutes` | How long GitHub responses stay fresh in `localStorage` |
+| `translation` | Translation provider, key, cache TTL and manual overrides (see **Languages**) |
+| `contact` | Email, location and profile links for the Contact section |
 
-## 📁 Project Structure
+> `js/config.js` ships to the browser. Do not put a real token in it if the site
+> is public — anonymous access already works, it is just rate limited.
+
+## Structure
 
 ```
-.
-├── index.html                # Main HTML file
-├── style.css                 # All styling and animations
-├── script.js                 # Core interactivity
-├── data.json                 # Centralized portfolio data
-├── data-loader.js            # JSON data management
-├── advanced-data-functions.js # Utility functions
-├── github-projects.js        # GitHub API integration
-├── icons.js                  # Skill icon mappings
-├── ui-enhancements.js        # UI interaction enhancements
-└── README.md                 # This file
+index.html          markup + section shells
+css/style.css       design tokens, layout, components, responsive rules
+data.json           profile source of truth
+js/
+  config.js         all user-editable settings
+  data-loader.js    fetches + normalises data.json (missing keys degrade safely)
+  github-api.js     cached GitHub client, rate-limit + ETag handling
+  charts.js         dependency-free SVG donut / stacked language bars
+  theme.js          dark/light switch, stored preference, system fallback
+  i18n.js           current language + hand-written UI dictionary (en/fr)
+  translate.js      runtime translation of data.json, with localStorage cache
+  ui.js             DOM helpers, profile sections, navigation, skeletons
+  projects.js       repo cards + detail modal (README, releases, chart)
+  animations.js     Lenis smooth scroll + GSAP scroll reveals
+  main.js           entry point wiring it all together
 ```
 
----
-
-## 📋 Configuration Guide
-
-### GitHub Projects (github-projects.js)
-
-```javascript
-const GITHUB_CONFIG = {
-    username: 'your-username',           // Required: Your GitHub username
-    maxProjects: 6,                      // How many projects to display
-    excludeRepos: ['portfolio-repo'],    // Repos to hide
-    sortBy: 'stars'                      // 'stars' | 'updated' | 'pushed' | 'name'
-};
-```
-
-**Sort Options:**
-- `stars` - Most popular projects first
-- `updated` - Most recently modified first
-- `pushed` - Latest pushes first
-- `name` - Alphabetical order
-
-### Portfolio Data (data.json)
-
-```json
-{
-  "profile": {
-    "name": "Your Name",
-    "title": "Your Title",
-    "description": "Short description",
-    "about": "Longer bio"
-  },
-  "experience": [{
-    "id": 1,
-    "title": "Job Title",
-    "company": "Company Name",
-    "dateStart": "Jan 2025",
-    "dateEnd": "Present",
-    "description": "What you did..."
-  }],
-  "education": [{
-    "id": 1,
-    "degree": "Bachelor's",
-    "school": "University Name",
-    "dateStart": "2020",
-    "dateEnd": "2024",
-    "details": "Major/specialization"
-  }],
-  "certifications": [{
-    "id": 1,
-    "title": "Certification Name",
-    "description": "Details..."
-  }],
-  "skills": {
-    "languages": [{"name": "Python", "icon": "python"}],
-    "backend": [{"name": "Django", "icon": "django"}],
-    "tools": [{"name": "Git", "icon": "git"}]
-  }
-}
-```
-
-### Add Custom Skills
-
-Edit `icons.js` to add new skill icons:
-```javascript
-'Your Skill': { name: 'devicon-name', folder: 'folder', color: '#hexcolor' }
-```
-
-Uses [Devicon CDN](https://devicon.dev/) (40+ technologies pre-configured).
-
-### Customize Colors
-
-Edit `style.css` CSS variables (lines 5-8):
-```css
---color-primary: #3b82f6;        /* Main color */
---color-primary-dark: #1e40af;   /* Hover color */
---color-secondary: #10b981;      /* Accent 1 */
---color-accent: #f59e0b;         /* Accent 2 */
-```
-
-Popular combinations:
-```css
-/* Purple */ --color-primary: #a855f7;
-/* Teal */   --color-primary: #14b8a6;
-/* Red */    --color-primary: #ef4444;
-```
-
-### Email Form Integration
-
-The form validates locally. To make it functional, choose one:
-
-**Option 1: Formspree (Recommended)**
-```html
-<form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-```
-1. Sign up at [formspree.io](https://formspree.io)
-2. Create form and get your ID
-3. Update form action above
-
-**Option 2: EmailJS (Client-side)**
-```javascript
-emailjs.init("YOUR_PUBLIC_KEY");
-contactForm.addEventListener('submit', async (e) => {
-    await emailjs.sendForm('service_id', 'template_id', contactForm);
-});
-```
-
----
-
-## 💡 Usage Examples
-
-### Adding a New Skill
-
-**In `data.json`:**
-```json
-"languages": [
-  {"name": "Python", "icon": "python"},
-  {"name": "Go", "icon": "go"}     // ← New skill
-]
-```
-
-**In `icons.js`** (if icon doesn't exist):
-```javascript
-'Go': { name: 'go', folder: 'go', color: '#00add8' }
-```
-
-Refresh browser - skill appears automatically!
-
-### Sorting GitHub Projects by Different Criteria
-
-**Most recent work:**
-```javascript
-sortBy: 'pushed'
-```
-
-**Latest updates:**
-```javascript
-sortBy: 'updated'
-```
-
-**Alphabetical:**
-```javascript
-sortBy: 'name'
-```
-
-### Hiding Test/Learning Repos
-
-```javascript
-excludeRepos: [
-  'your-username.github.io',  // Portfolio itself
-  'learning-javascript',       // Learning projects
-  'test-repo',                 // Test repos
-  'temp-*'                     // Temporary repos
-]
-```
-
----
+## Sections
+
+`Home · About · Skills · Personal Projects · Contact`. Personal-account repos and
+JJE Corpo repos share the single **Personal Projects** grid, sorted by most recent
+push; org repos carry a `JJE Corpo` badge. If one of the two sources fails, the
+other still renders — the error only surfaces when both fail.
+
+## Behaviour notes
+
+- **Caching.** Every GitHub response is stored in `localStorage` with its ETag.
+  Fresh entries are served without a network call; stale ones are revalidated
+  with `If-None-Match`, and a `304` does not count against the quota.
+- **Rate limits.** A `403`/`429` with `x-ratelimit-remaining: 0` falls back to
+  cached data, or shows a friendly notice with the reset time. The footer shows
+  the remaining quota and a *clear cache* button.
+- **Failure modes.** A missing or malformed `data.json` replaces the page with a
+  readable error; a GitHub outage only affects the project grids.
+- **Motion.** GSAP, Lenis, marked and DOMPurify all load from CDNs with `defer`.
+  If any fail to load — or the visitor has `prefers-reduced-motion: reduce` — the
+  page still renders and scrolls normally.
+- **README safety.** Markdown is rendered with `marked` and sanitised with
+  DOMPurify; relative links and images are rewritten to the repo's default branch.
+
+## Theme
+
+The palette lives entirely in the `:root` token block at the top of
+`css/style.css` — change `--lavender`, `--peach`, `--mist`, `--sage` and the
+`--bg*` values and the whole site follows. Colours are named rather than
+aliased, so there is one scheme and no dead tokens.
+
+The theme is deliberately low-contrast in its decoration: no neon glows, no
+coloured halo rings. Depth comes from soft diffuse shadows (`--shadow`,
+`--shadow-lav`), 1px borders at ~8% white, and `backdrop-filter` glass.
+
+- `body` background — three very wide, low-opacity radial halos, fixed
+- `.hero__glow` — a single blurred lavender halo behind the headline
+- `.hero__grid` — a static 30px dot texture, masked to fade at the edges
+- `.section + .section::before` — a barely-there gradient hairline divider
+- `.section--contact::after` — a soft horizon glow closing the page
+
+### Light mode
+
+The toggle in the nav flips `data-theme` on `<html>`; the stored choice lives in
+`localStorage` under `portfolio:theme`, and a visitor who never chooses follows
+their OS setting. An inline script in `<head>` applies the theme before the first
+paint, so there is no flash of the wrong palette.
+
+`:root[data-theme='light']` **only redefines tokens** — no component rule is
+duplicated. That works because every colour in the stylesheet goes through a
+token or a `color-mix()` on one: surfaces become dark veils over a pale ground,
+accents darken enough to stay legible, halos gain a little saturation. Add a
+colour to a component and it follows both themes for free.
+
+Under `prefers-reduced-motion: reduce` every animation and transition stops.
+
+Fonts: **Outfit** (display), **Space Grotesk** (body), **JetBrains Mono** (code).
+
+## Languages
+
+`EN | FR` sits next to the theme toggle. The choice is stored under
+`portfolio:lang`, and a first-time visitor gets French only if their browser
+asks for it.
+
+Two kinds of text are handled differently, on purpose:
+
+- **Interface** (nav, section titles, buttons, errors, relative dates) — hand
+  translated in [`js/i18n.js`](js/i18n.js). Short, fixed, and free: no API call.
+  Missing keys fall back to English rather than to a blank.
+- **Content** (`data.json`) — translated at runtime by
+  [`js/translate.js`](js/translate.js) through the provider set in
+  `CONFIG.translation`, then cached in `localStorage` for 30 days. `data.json`
+  stays English: it is the source of truth, never mutated, so switching back to
+  English is instant and costs nothing.
+
+Three providers are wired: `mymemory` (default, no account, ~5 000 chars/day per
+IP — this site needs ~2 500), `libretranslate` (public or self-hosted instance)
+and `deepl` (best quality, key required). `'none'` disables content translation
+while keeping the translated interface.
+
+Switching language re-renders from memory: **zero extra GitHub API calls**.
+
+### Limits worth knowing
+
+- The first switch to French costs one round trip (~3 s here). After that it is
+  served from cache.
+- Any API key you put in `config.js` ships to the browser. For a public repo,
+  proxy DeepL rather than exposing the key, or stay on MyMemory.
+- Repo descriptions come from GitHub in English. Set
+  `translation.translateRepoDescriptions: true` to translate them too — it scales
+  with the number of repos, so it is the first thing to burn the quota. READMEs
+  are never translated.
+- **Machine translation gets things wrong.** Observed on this very content:
+  `TOEIC score: 700` came back as `Score TOEIC :.` — the number silently
+  dropped. Two guards: a translation that loses a number present in the source is
+  rejected (the English is shown instead, with a console warning), and
+  `translation.overrides.fr` lets you pin the exact French for any string —
+  acronyms, degrees, job titles. Overrides are checked before the cache and the
+  API, so they are free and instant. Read the French page before shipping it.
+- If the API is unreachable, the interface still switches to French and the
+  content stays English, with a discreet toast saying so.
+
+## Third-party libraries
 
-## 📱 Responsive Design
-
-Automatic responsive layouts:
-- **Desktop** (1200px+) - Multi-column grids
-- **Tablet** (768-1199px) - 2-column layouts
-- **Mobile** (480-767px) - Single column
-- **Small Mobile** (<480px) - Optimized spacing
-
-No manual adjustments needed - CSS handles it!
-
----
-
-## 🌙 Dark Mode
-
-- Toggle button in navbar
-- User preference saved to browser (localStorage)
-- Smooth transitions
-- Full support for both themes
-
-To customize dark mode colors, edit `style.css` (lines 38-46):
-```css
-body.dark-mode {
-    --bg-primary: #0f172a;
-    --bg-secondary: #1e293b;
-    --text-primary: #f1f5f9;
-}
-```
-
----
-
-## 🎨 Customization Tips
-
-### Keep It Simple
-- 2-3 paragraphs max in About
-- 3-5 "best" projects, not all of them
-- Group skills by category
-
-### Visual Hierarchy
-- Clear headings
-- Plenty of white space
-- High text contrast
-- Touch targets ≥ 48px
-
-### Mobile First
-- Test on actual mobile devices
-- Tap-friendly buttons
-- Readable font sizes
-- Stack all sections vertically
-
-### Trust Signals
-- Keep portfolio updated (last modified date helps)
-- Include testimonials or certifications
-- Show active GitHub contributions
-- Professional email address
-
----
-
-## 🔄 Maintenance Checklist
-
-### Monthly
-- [ ] Update featured projects
-- [ ] Fix any broken links
-- [ ] Review contact form
-- [ ] Check for typos
-
-### Quarterly
-- [ ] Add new projects
-- [ ] Update skills if learned new tech
-- [ ] Test on different browsers/devices
-
-### Yearly
-- [ ] Review design freshness
-- [ ] Update bio/experience
-- [ ] Consider design refresh
-
----
-
-## 🚫 Common Issues
-
-| Problem | Solution |
-|---------|----------|
-| Data not displaying | Ensure `data.json` format is valid (check [jsonlint.com](https://jsonlint.com)) |
-| Changes not appearing | Hard refresh: `Ctrl+Shift+R` or clear cache |
-| Skills not showing icons | Check skill name matches exactly in `icons.js` |
-| GitHub projects blank | Verify username in `github-projects.js` and public repos exist |
-
----
-
-## 📚 Resources
-
-- [CSS-Tricks](https://css-tricks.com/) - CSS reference
-- [MDN Web Docs](https://developer.mozilla.org/) - HTML/CSS/JS docs
-- [Web.dev](https://web.dev/) - Performance optimization
-- [Devicon](https://devicon.dev/) - Technology icons
-- [GitHub Pages Docs](https://pages.github.com/) - Deployment help
-
----
-
-## 📧 Email Form
-
-**Option 1: Formspree (Easiest)**
-1. Sign up at formspree.io
-2. Update form action in index.html with your form ID
-
-**Option 2: EmailJS**
-1. Sign up at emailjs.com
-2. Add initialization code to script.js
-
-**Option 3: Backend API**
-- Update form submission code in script.js
-
-See `DEPLOYMENT.md` for detailed instructions.
-
-## 🌐 Deploy to GitHub Pages
-
-1. Create repo: `yourusername.github.io`
-2. Push files to main branch
-3. Visit `yourusername.github.io` - Done! 🎉
-
-Full instructions in `DEPLOYMENT.md`
-
-## 🎯 Next Steps
-
-1. ✏️ Personalize all content sections
-2. 🎨 Adjust colors and typography
-3. 🔗 Add your social media links
-4. 📧 Set up email form integration
-5. 🚀 Deploy to GitHub Pages
-6. 📊 Add Google Analytics (optional)
-
-## 📚 Resources
-
-- [MDN Web Docs](https://developer.mozilla.org/)
-- [GitHub Pages Docs](https://pages.github.com/)
-- [CSS Custom Properties](https://developer.mozilla.org/en-US/docs/Web/CSS/--*)
-
-## 💡 Tips
-
-- Keep your portfolio updated with recent projects
-- Test on mobile devices before deploying
-- Use good quality screenshots for projects
-- Write clear, concise project descriptions
-- Include relevant technologies for each project
-
----
-
-**Ready to showcase your work? Let's go! 🚀**
-
-For detailed customization and deployment instructions, see `DEPLOYMENT.md`
+Loaded from CDN, no install required: GSAP + ScrollTrigger, Lenis, marked,
+DOMPurify. Charts are hand-written SVG — no charting dependency.
